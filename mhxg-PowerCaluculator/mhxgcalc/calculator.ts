@@ -5,16 +5,16 @@ module mhxgcalc {
     /**
      * ダメージ計算器 
      */
-    class Calculator {
+    export class Calculator {
         sum(items: any[], numberSelector: (e: any) => number): number {
-            return items.map(e => numberSelector(e)).reduce((n, c) => n + c);
+            return items.length == 0 ? 0 : items.map(e => numberSelector(e)).reduce((n, c) => n + c);
         }
         /**
          * 最終期待値
          * @return
          */
         kitaichi(weapon: Weapon, ...skills: Skill[]): number {
-            return this.power(weapon, ...skills) * (1 + 0.25 * this.critical(weapon, ...skills)/100 * 1.25)
+            return this.power(weapon, ...skills) * (1 + 0.25 * this.critical(weapon, ...skills))
         }
 
         /**
@@ -29,7 +29,7 @@ module mhxgcalc {
          * 会心
          * @param weapon
          */
-        critical(weapon: Weapon, ...skills:Skill[]): number {
+        critical(weapon: Weapon, ...skills: Skill[]): number {
             return weapon.critical + this.sum(skills.filter(e => e.target == AdjustTarget.critical), e => e.attack);
         }
 

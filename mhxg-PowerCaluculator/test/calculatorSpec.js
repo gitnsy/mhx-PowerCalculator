@@ -12,13 +12,13 @@ describe('mhxgのスキル期待値計算', function () {
                 expect(calc.power(weapon, attack1)).toBe(210);
             });
             it('会心', function () {
-                expect(calc.power(weapon)).toBe(0);
+                expect(calc.critical(weapon, attack1)).toBe(0);
             });
             it('期待値', function () {
-                expect(calc.power(weapon)).toBe(210);
+                expect(calc.kitaichi(weapon, attack1)).toBe(210);
             });
             it('増加率', function () {
-                expect(calc.power(weapon)).toBe(210);
+                expect(calc.zoukaritsu(weapon, attack1)).toBe(210);
             });
         });
         describe('闘魂', function () {

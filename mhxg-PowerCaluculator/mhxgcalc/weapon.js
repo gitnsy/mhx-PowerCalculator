@@ -6,7 +6,7 @@ var mhxgcalc;
     var Weapon = (function () {
         function Weapon(attack, critical) {
             this.atack = attack;
-            this, critical = critical;
+            this.critical = critical;
         }
         return Weapon;
     })();

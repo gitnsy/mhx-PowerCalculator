@@ -10,7 +10,7 @@ module mhxgcalc {
         critical: number
 
         constructor(attack:number,critical:number) {
-            this.atack = attack; this, critical = critical;
+            this.atack = attack; this.critical = critical;
         }
     }
 }

@@ -8,7 +8,7 @@ var mhxgcalc;
         function Calculator() {
         }
         Calculator.prototype.sum = function (items, numberSelector) {
-            return items.map(function (e) { return numberSelector(e); }).reduce(function (n, c) { return n + c; });
+            return items.length == 0 ? 0 : items.map(function (e) { return numberSelector(e); }).reduce(function (n, c) { return n + c; });
         };
         /**
          * 最終期待値
@@ -19,7 +19,7 @@ var mhxgcalc;
             for (var _i = 1; _i < arguments.length; _i++) {
                 skills[_i - 1] = arguments[_i];
             }
-            return this.power.apply(this, [weapon].concat(skills)) * (1 + 0.25 * this.critical.apply(this, [weapon].concat(skills)) / 100 * 1.25);
+            return this.power.apply(this, [weapon].concat(skills)) * (1 + 0.25 * this.critical.apply(this, [weapon].concat(skills)));
         };
         /**
          * 物理
@@ -55,5 +55,6 @@ var mhxgcalc;
         };
         return Calculator;
     })();
+    mhxgcalc.Calculator = Calculator;
 })(mhxgcalc || (mhxgcalc = {}));
 //# sourceMappingURL=calculator.js.map

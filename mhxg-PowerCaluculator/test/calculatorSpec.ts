@@ -11,7 +11,7 @@ describe('mhxgのスキル期待値計算', () => {
     describe("倍率200,会心0武器", () => {
         describe('攻撃小', () => {
 
-            var calc = new mhxgcalc.Calculator()
+            var calc = new mhxgcalc.Calculator();
 
             var attack1 = new mhxgcalc.Skill(mhxgcalc.AdjustTarget.attack, 10);
             var weapon = new mhxgcalc.Weapon(200,0)
@@ -20,13 +20,13 @@ describe('mhxgのスキル期待値計算', () => {
                 expect(calc.power(weapon,attack1)).toBe(210);
             });
             it('会心', () => {
-                expect(calc.power(weapon)).toBe(0);
+                expect(calc.critical(weapon, attack1)).toBe(0);
             });
             it('期待値', () => {
-                expect(calc.power(weapon)).toBe(210);
+                expect(calc.kitaichi(weapon, attack1)).toBe(210);
             });
             it('増加率', () => {
-                expect(calc.power(weapon)).toBe(210);
+                expect(calc.zoukaritsu(weapon, attack1)).toBe(210);
             });
         });
 
