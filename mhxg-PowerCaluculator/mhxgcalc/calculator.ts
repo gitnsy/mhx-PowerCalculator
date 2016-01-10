@@ -14,7 +14,7 @@ module mhxgcalc {
          * @return
          */
         kitaichi(weapon: Weapon, ...skills: Skill[]): number {
-            return this.power(weapon, ...skills) * (1 + 0.25 * this.critical(weapon, ...skills))
+            return this.power(weapon, ...skills) * (1 + (0.25 * this.critical(weapon, ...skills))/100)
         }
 
         /**

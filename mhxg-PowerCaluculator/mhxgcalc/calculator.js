@@ -19,7 +19,7 @@ var mhxgcalc;
             for (var _i = 1; _i < arguments.length; _i++) {
                 skills[_i - 1] = arguments[_i];
             }
-            return this.power.apply(this, [weapon].concat(skills)) * (1 + 0.25 * this.critical.apply(this, [weapon].concat(skills)));
+            return this.power.apply(this, [weapon].concat(skills)) * (1 + (0.25 * this.critical.apply(this, [weapon].concat(skills))) / 100);
         };
         /**
          * 物理
