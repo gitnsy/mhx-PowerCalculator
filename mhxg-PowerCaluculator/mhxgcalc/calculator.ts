@@ -13,7 +13,7 @@ module mhxgcalc {
          * 最終期待値
          * @return
          */
-        kitaichi(weapon: Weapon, ...skills: Skill[]): number {
+        expected(weapon: Weapon, ...skills: Skill[]): number {
             return this.power(weapon, ...skills) * (1 + (0.25 * this.critical(weapon, ...skills))/100)
         }
 
@@ -34,10 +34,25 @@ module mhxgcalc {
         }
 
         /**
-         * スキルセットから導き出される火力増加率
+         * スキルがそのスキルセットから導き出される火力に対してどの程度の増加率を上げたか
          */
-        zoukaritsu(weapon: Weapon, ...skills: Skill[]): number {
-            return ;
+        increaceRate(weapon: Weapon, checkSkill, ...skills: Skill[]): number {
+            // 攻撃増加
+            return this.expected(weapon, ...skills);
+
+            // 会心増加
+            // 倍率増加
+        }
+
+        /**
+         * スキルがそのスキルセットから導き出される火力に対してどの程度の実増加値となったか
+         */
+        increaceValue(weapon: Weapon, checkSkill, ...skills: Skill[]): number {
+            // 攻撃増加
+            return this.expected(weapon, ...skills);
+
+            // 会心増加
+            // 倍率増加
         }
     }
 

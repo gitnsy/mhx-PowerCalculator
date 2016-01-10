@@ -20,15 +20,19 @@ describe('mhxgのスキル期待値計算', () => {
                 expect(calc.critical(weapon, attack1)).toBe(0);
             });
             it('期待値', () => {
-                expect(calc.kitaichi(weapon, attack1)).toBe(210);
+                expect(calc.expected(weapon, attack1)).toBe(210);
             });
             it('増加率', () => {
                 fail("未実装");
-                //expect(calc.zoukaritsu(weapon, attack1)).toBe(210);
+                expect(calc.increaceRate(weapon, attack1, attack1)).toBe(1.05);
+            });
+            it('増加量', () => {
+                fail("未実装");
+                expect(calc.increaceValue(weapon, attack1, attack1)).toBe(10);
             });
         });
 
-        describe('闘魂', () => {
+        describe('挑戦者2', () => {
 
             var calc = new mhxgcalc.Calculator();
 
@@ -45,7 +49,7 @@ describe('mhxgのスキル期待値計算', () => {
                 expect(calc.critical(weapon, ...challenger2)).toBe(20);
             });
             it('期待値', () => {
-                expect(calc.kitaichi(weapon, ...challenger2)).toBe(236.25);
+                expect(calc.expected(weapon, ...challenger2)).toBe(236.25);
             });
             it('増加率', () => {
                 fail("未実装");

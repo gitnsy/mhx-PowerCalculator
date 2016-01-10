@@ -14,7 +14,7 @@ var mhxgcalc;
          * 最終期待値
          * @return
          */
-        Calculator.prototype.kitaichi = function (weapon) {
+        Calculator.prototype.expected = function (weapon) {
             var skills = [];
             for (var _i = 1; _i < arguments.length; _i++) {
                 skills[_i - 1] = arguments[_i];
@@ -44,14 +44,30 @@ var mhxgcalc;
             return weapon.critical + this.sum(skills.filter(function (e) { return e.target == mhxgcalc.AdjustTarget.critical; }), function (e) { return e.attack; });
         };
         /**
-         * スキルセットから導き出される火力増加率
+         * スキルがそのスキルセットから導き出される火力に対してどの程度の増加率を上げたか
          */
-        Calculator.prototype.zoukaritsu = function (weapon) {
+        Calculator.prototype.increaceRate = function (weapon, checkSkill) {
             var skills = [];
-            for (var _i = 1; _i < arguments.length; _i++) {
-                skills[_i - 1] = arguments[_i];
+            for (var _i = 2; _i < arguments.length; _i++) {
+                skills[_i - 2] = arguments[_i];
             }
-            return;
+            // 攻撃増加
+            return this.expected.apply(this, [weapon].concat(skills));
+            // 会心増加
+            // 倍率増加
+        };
+        /**
+         * スキルがそのスキルセットから導き出される火力に対してどの程度の実増加値となったか
+         */
+        Calculator.prototype.increaceValue = function (weapon, checkSkill) {
+            var skills = [];
+            for (var _i = 2; _i < arguments.length; _i++) {
+                skills[_i - 2] = arguments[_i];
+            }
+            // 攻撃増加
+            return this.expected.apply(this, [weapon].concat(skills));
+            // 会心増加
+            // 倍率増加
         };
         return Calculator;
     })();
