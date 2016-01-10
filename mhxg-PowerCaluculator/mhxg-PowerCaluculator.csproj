@@ -805,6 +805,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
     <TypeScriptCompile Include="mhxgcalc\calculator.ts" />
+    <TypeScriptCompile Include="mhxgcalc\myset.ts" />
     <TypeScriptCompile Include="mhxgcalc\skill.ts" />
     <TypeScriptCompile Include="mhxgcalc\weapon.ts" />
     <TypeScriptCompile Include="Scripts\typings\jasmine\jasmine.d.ts" />
