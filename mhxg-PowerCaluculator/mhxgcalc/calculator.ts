@@ -36,23 +36,25 @@ module mhxgcalc {
         /**
          * スキルがそのスキルセットから導き出される火力に対してどの程度の増加率を上げたか
          */
-        increaceRate(weapon: Weapon, checkSkill, ...skills: Skill[]): number {
-            // 攻撃増加
-            return this.expected(weapon, ...skills);
-
-            // 会心増加
-            // 倍率増加
+        increaceRate(weapon: Weapon, checkSkill: Skill, ...skills: Skill[]): number {
+            switch (checkSkill.target) {
+                case AdjustTarget.attack  : return this.expected(weapon, ...skills) / (this.expected(weapon, ...skills) - checkSkill.attack);
+                // 会心増加
+                // 倍率増加
+                default: return 0;
+            }
         }
 
         /**
          * スキルがそのスキルセットから導き出される火力に対してどの程度の実増加値となったか
          */
-        increaceValue(weapon: Weapon, checkSkill, ...skills: Skill[]): number {
-            // 攻撃増加
-            return this.expected(weapon, ...skills);
-
+        increaceValue(weapon: Weapon, checkSkill: Skill, ...skills: Skill[]): number {
+            switch (checkSkill.target) {
+                case AdjustTarget.attack: return checkSkill.attack;
             // 会心増加
             // 倍率増加
+                default : return 0;
+            }
         }
     }
 

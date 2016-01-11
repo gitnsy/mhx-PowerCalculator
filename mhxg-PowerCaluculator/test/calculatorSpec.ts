@@ -23,12 +23,35 @@ describe('mhxgのスキル期待値計算', () => {
                 expect(calc.expected(weapon, attack1)).toBe(210);
             });
             it('増加率', () => {
-                fail("未実装");
                 expect(calc.increaceRate(weapon, attack1, attack1)).toBe(1.05);
             });
             it('増加量', () => {
-                fail("未実装");
                 expect(calc.increaceValue(weapon, attack1, attack1)).toBe(10);
+            });
+        });
+
+        describe('見切り1', () => {
+            var calc = new mhxgcalc.Calculator();
+
+            var critical1 = new mhxgcalc.Skill(mhxgcalc.AdjustTarget.critical, 10);
+            var weapon = new mhxgcalc.Weapon(200, 0)
+
+            it('物理', () => {
+                expect(calc.power(weapon, critical1)).toBe(200);
+            });
+            it('会心', () => {
+                expect(calc.critical(weapon, critical1)).toBe(10);
+            });
+            it('期待値', () => {
+                expect(calc.expected(weapon, critical1)).toBe(205);
+            });
+            it('増加率', () => {
+                fail("未実装");
+                expect(calc.increaceRate(weapon, critical1, critical1)).toBe(1.025);
+            });
+            it('増加量', () => {
+                fail("未実装");
+                expect(calc.increaceValue(weapon, critical1, critical1)).toBe(5);
             });
         });
 
@@ -53,7 +76,11 @@ describe('mhxgのスキル期待値計算', () => {
             });
             it('増加率', () => {
                 fail("未実装");
-                //expect(calc.zoukaritsu(weapon, ...challenger2)).toBe(210);
+                expect(calc.increaceRate(weapon, ...challenger2)).toBe(210);
+            });
+            it('増加量', () => {
+                fail("未実装");
+                expect(calc.increaceValue(weapon, attack1, attack1)).toBe(10);
             });
         });
     });
