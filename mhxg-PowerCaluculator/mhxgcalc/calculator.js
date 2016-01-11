@@ -51,10 +51,12 @@ var mhxgcalc;
             for (var _i = 2; _i < arguments.length; _i++) {
                 skills[_i - 2] = arguments[_i];
             }
-            // 攻撃増加
-            return this.expected.apply(this, [weapon].concat(skills));
-            // 会心増加
-            // 倍率増加
+            switch (checkSkill.target) {
+                case mhxgcalc.AdjustTarget.attack: return this.expected.apply(this, [weapon].concat(skills)) / (this.expected.apply(this, [weapon].concat(skills)) - checkSkill.attack);
+                // 会心増加
+                // 倍率増加
+                default: return 0;
+            }
         };
         /**
          * スキルがそのスキルセットから導き出される火力に対してどの程度の実増加値となったか
@@ -64,10 +66,12 @@ var mhxgcalc;
             for (var _i = 2; _i < arguments.length; _i++) {
                 skills[_i - 2] = arguments[_i];
             }
-            // 攻撃増加
-            return this.expected.apply(this, [weapon].concat(skills));
-            // 会心増加
-            // 倍率増加
+            switch (checkSkill.target) {
+                case mhxgcalc.AdjustTarget.attack: return checkSkill.attack;
+                // 会心増加
+                // 倍率増加
+                default: return 0;
+            }
         };
         return Calculator;
     })();
